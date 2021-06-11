@@ -22,54 +22,105 @@ main {
 h1 {
   font-size: 2rem;
   text-align: center;
-  margin: 38px 0;
+  margin-top: 88px;
+  margin-bottom: 30px;
 }
 
-.accordion {
+.card {
+  position: relative;
   width: 90vw;
-  max-width: 460px;
+  max-width: 920px;
   background-color: white;
   border-radius: 20px;
   padding: 50px 25px;
   box-shadow: 0px 50px 50px -20px rgba(53, 18, 122, 0.497159);
 }
 
-.accordion .accordion-item {
+.card .accordion .accordion-item {
   border-bottom: 1px solid #e7e7e9;
   padding: 20px 0;
 }
 
-.accordion .accordion-item .accordion-item-header {
+.card .accordion .accordion-item .accordion-item-header {
   font-size: 13px;
   font-weight: 400;
   position: relative;
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: font-weight 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
-.accordion .accordion-item .accordion-item-header.active {
+.card .accordion .accordion-item .accordion-item-header.active {
   font-weight: 700;
 }
 
-.accordion .accordion-item .accordion-item-header::after {
+.card .accordion .accordion-item .accordion-item-header:hover {
+  color: #f47c57;
+}
+
+.card .accordion .accordion-item .accordion-item-header::after {
   content: url("../images/icon-arrow-down.svg");
   position: absolute;
   right: 0;
-  transition: transform 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
-.accordion .accordion-item .accordion-item-header.active::after {
+.card .accordion .accordion-item .accordion-item-header.active::after {
   transform: rotate(180deg);
 }
 
-.accordion .accordion-item .accordion-item-body {
+.card .accordion .accordion-item .accordion-item-body {
   max-height: 0;
   overflow: hidden;
 }
 
-.accordion .accordion-item .accordion-item-body .accordion-item-body-content {
+.card .accordion .accordion-item .accordion-item-body .accordion-item-body-content {
   font-size: 12px;
+}
+
+.box {
+  display: none;
+}
+
+picture {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+picture:nth-of-type(2) {
+  position: absolute;
+  top: 10%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+}
+
+@media (min-width: 768px) {
+  .card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  picture {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+  }
+  picture:nth-of-type(2) {
+    position: absolute;
+    top: 35%;
+    left: -70px;
+    transform: translate(-50%, -50%);
+  }
+  .box {
+    display: block;
+    position: absolute;
+    top: 60%;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
 }
 /*# sourceMappingURL=main.css.map */

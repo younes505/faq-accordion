@@ -46,59 +46,116 @@ main {
 h1 {
   font-size: 2rem;
   text-align: center;
-  margin: 38px 0;
+  margin-top: 88px;
+  margin-bottom: 30px;
 }
 
 // Styling
 // Accordion
-.accordion {
+.card {
+  position: relative;
   width: 90vw;
-  max-width: 460px;
+  max-width: 920px;
   background-color: white;
   border-radius: 20px;
   padding: 50px 25px;
   box-shadow: 0px 50px 50px -20px rgba(53, 18, 122, 0.497159);
 
-  .accordion-item {
-    border-bottom: 1px solid $clr-divider;
-    padding: 20px 0;
+  .accordion {
+    .accordion-item {
+      border-bottom: 1px solid $clr-divider;
+      padding: 20px 0;
 
-    .accordion-item-header {
-      font-size: $font-size-main-p;
-      font-weight: 400;
-      position: relative;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      transition: font-weight 0.2s ease-in-out;
+      .accordion-item-header {
+        font-size: $font-size-main-p;
+        font-weight: 400;
+        position: relative;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
 
-      &.active {
-        font-weight: 700;
+        &.active {
+          font-weight: 700;
+        }
+
+        &:hover {
+          color: $clr-soft-red;
+        }
+
+        &::after {
+          content: url("../images/icon-arrow-down.svg");
+          position: absolute;
+          right: 0;
+          transition: 0.2s ease-in-out;
+        }
+        &.active::after {
+          transform: rotate(180deg);
+        }
       }
 
-      &::after {
-        content: url("../images/icon-arrow-down.svg");
-        position: absolute;
-        right: 0;
-        transition: transform 0.2s ease-in-out;
-      }
-      &.active::after {
-        transform: rotate(180deg);
-      }
-    }
+      .accordion-item-body {
+        max-height: 0;
+        overflow: hidden;
 
-    .accordion-item-body {
-      max-height: 0;
-      overflow: hidden;
-
-      .accordion-item-body-content {
-        font-size: 12px;
+        .accordion-item-body-content {
+          font-size: 12px;
+        }
       }
     }
   }
 }
 
+// image container
+
+.box {
+  display: none;
+}
+
+picture {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+picture:nth-of-type(2) {
+  position: absolute;
+  top: 10%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+}
+
 // Media queries
 @media (min-width: 768px) {
-  $font-size-p: 14px;
+  body {
+    $font-size-p: 14px;
+  }
+
+  .card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  picture {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+  }
+  picture:nth-of-type(2) {
+    position: absolute;
+    top: 35%;
+    left: -70px;
+    transform: translate(-50%, -50%);
+  }
+
+  .box {
+    display: block;
+    position: absolute;
+    top: 60%;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
 }
