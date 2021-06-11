@@ -1,0 +1,104 @@
+// Font
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap");
+
+$font: "Kumbh Sans", sans-serif;
+
+// font-sizes
+$font-size-main-p: 13px;
+
+// Colors
+// text
+$clr-text-des-blue: hsl(238, 29%, 16%);
+$clr-soft-red: hsl(14, 88%, 65%);
+
+// Background gradient
+$clr-soft-violet: hsl(273, 75%, 66%);
+$clr-soft-blue: hsl(240, 73%, 65%);
+
+// Neutral-Text
+$clr-very-dark-grayish-blue: hsl(240, 5%, 41%);
+$clr-dark-grayish-blue: hsl(240, 6%, 50%);
+
+// Dividers
+$clr-divider: hsl(240, 5%, 91%);
+
+// Base
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font;
+  line-height: 18px;
+}
+
+main {
+  height: 100vh;
+  background: linear-gradient(to top, $clr-soft-blue, $clr-soft-violet);
+  display: grid;
+  place-items: center;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 38px 0;
+}
+
+// Styling
+// Accordion
+.accordion {
+  width: 90vw;
+  max-width: 460px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 50px 25px;
+  box-shadow: 0px 50px 50px -20px rgba(53, 18, 122, 0.497159);
+
+  .accordion-item {
+    border-bottom: 1px solid $clr-divider;
+    padding: 20px 0;
+
+    .accordion-item-header {
+      font-size: $font-size-main-p;
+      font-weight: 400;
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: font-weight 0.2s ease-in-out;
+
+      &.active {
+        font-weight: 700;
+      }
+
+      &::after {
+        content: url("../images/icon-arrow-down.svg");
+        position: absolute;
+        right: 0;
+        transition: transform 0.2s ease-in-out;
+      }
+      &.active::after {
+        transform: rotate(180deg);
+      }
+    }
+
+    .accordion-item-body {
+      max-height: 0;
+      overflow: hidden;
+
+      .accordion-item-body-content {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+// Media queries
+@media (min-width: 768px) {
+  $font-size-p: 14px;
+}
